@@ -1,0 +1,243 @@
+package com.example.pomidor;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+    public int a;
+    public int b;
+    public boolean isFirstSet = false;
+    public boolean isSecondSet = false;
+    public int result;
+    public int equasionType; //1=Addition,2=subtraction
+    private int n;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView tekst = (TextView) findViewById(R.id.equasion);
+        tekst.setText("0");
+//        First row
+
+        Button przycisk1 = (Button) findViewById(R.id.button1);
+        przycisk1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("1");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"1");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk2 = (Button) findViewById(R.id.button2);
+        przycisk2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("2");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"2");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk3 = (Button) findViewById(R.id.button3);
+        przycisk3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("3");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"3");
+                    n++;
+                }
+            }
+        });
+
+        Button przyciskAdd = (Button) findViewById(R.id.buttonAdd);
+        przyciskAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp = String.valueOf(tekst.substring(n));
+                if(isFirstSet==false) {
+                    a = Integer.parseInt(temp);
+                    isFirstSet=true;
+                }
+                equasionType=1;
+                tekst.setText(tekst.getText()+" + ");
+            }
+        });
+
+//        Second row
+
+        Button przycisk4 = (Button) findViewById(R.id.button4);
+        przycisk4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("4");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"4");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk5 = (Button) findViewById(R.id.button5);
+        przycisk5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("5");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"5");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk6 = (Button) findViewById(R.id.button6);
+        przycisk6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("6");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"6");
+                    n++;
+                }
+            }
+        });
+
+        Button przyciskSub = (Button) findViewById(R.id.buttonSub);
+        przyciskSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp = String.valueOf(tekst.substring(n));
+                if(isFirstSet==false) {
+                    a = Integer.parseInt(temp);
+                    isFirstSet = true;
+                }
+                equasionType=2;
+                tekst.setText(tekst.getText()+" - ");
+            }
+        });
+
+//        Third row
+
+        Button przycisk7 = (Button) findViewById(R.id.button7);
+        przycisk7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("7");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"7");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk8 = (Button) findViewById(R.id.button8);
+        przycisk8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("8");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"8");
+                    n++;
+                }
+            }
+        });
+
+        Button przycisk9 = (Button) findViewById(R.id.button9);
+        przycisk9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()=="0") {
+                    tekst.setText("9");
+                    n++;
+                }else{
+                    tekst.setText(tekst.getText()+"9");
+                    n++;
+                }
+            }
+        });
+
+//        Fourth row
+
+        Button przycisk0 = (Button) findViewById(R.id.button0);
+        przycisk0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tekst.getText()!="0") {
+                    tekst.setText(tekst.getText()+"0");
+                    n++;
+                }
+            }
+        });
+
+        Button przyciskEQ = (Button) findViewById(R.id.buttonEQ);
+        przyciskEQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp = String.valueOf(tekst.getText());
+                if(isFirstSet){
+                    b = Integer.parseInt(temp);
+                    isSecondSet = true;
+                }
+                if(isFirstSet && isSecondSet){
+                    switch(equasionType){
+                        case 1:
+                            result=a+b;
+                            tekst.setText(tekst.getText()+" = "+String.valueOf(result));
+                            a=0;
+                            b=0;
+                            isFirstSet=false;
+                            isSecondSet=false;
+                            n=0;
+                            break;
+                        case 2:
+                            result=a-b;
+                            tekst.setText(tekst.getText()+" = "+String.valueOf(result));
+                            a=0;
+                            b=0;
+                            isFirstSet=false;
+                            isSecondSet=false;
+                            n=0;
+                            break;
+                    }
+                }
+
+            }
+        });
+
+        Button przyciskAC = (Button) findViewById(R.id.buttonAC);
+        przyciskAC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                tekst.setText("0");
+                isFirstSet=false;
+                isSecondSet=false;
+            }
+        });
+    }
+}
